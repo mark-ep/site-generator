@@ -23,7 +23,7 @@ def month(date: str) -> str:
 @app.template_filter('day')
 def day(date: str) -> str:
     date = datetime.datetime.strptime(date, r"%d-%m-%Y")
-    return date.strftime("%d")
+    return str(date.day)
 
 @app.template_filter('suffix')
 def suffix(date: str) -> str:

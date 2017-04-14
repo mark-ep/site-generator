@@ -122,39 +122,28 @@ a:hover {
 }
 .post-banner {
   display: flex;
+  flex-wrap: wrap-reverse;
 }
 .date {
-  width: 4rem;
-  height: 4rem;
-  
   background: #d9381e;
   color: #e0dfd5;
 
   font-family: 'Raleway';
   font-weight: 300;
-  
-  display: flex;
-  flex-direction: column;
-  
-  justify-content: center;
-  align-items: center;
-}
-.date .day {
-  font-size: 28pt;
+
+  width: 100%;
+  padding: 6pt 0;
 }
 .date .day sup {
   font-size: 8pt;
   text-transform: uppercase;
   vertical-align: top;
-  margin-right: -1ex;
 }
 .date .month {
-  font-size: 14pt;
   text-transform: uppercase;
 }
 .post-title {
   flex: 1;
-  border-bottom: 4pt solid;
   margin: 0 6pt;
 }
 .post-title h1 {
@@ -192,9 +181,12 @@ a.tag:hover {
   margin: 6pt auto;
   
   display: flex;
+  flex-wrap: wrap-reverse;
   min-height: 72pt;
 }
 #copy-disclaimer {
+  min-width: 500px;
+
   flex: 2;
   display: flex;
   
@@ -203,7 +195,8 @@ a.tag:hover {
   align-items: center;
   color: #e8e9eb;
 
-  border-right: 2pt solid;
+  border-top: 2pt solid;
+  min-height: 4em;
 }
 #footer-links {
   flex: 1;
@@ -258,4 +251,32 @@ em {
 }
 strong {
   font-weight: 700;
+}
+@media (min-width: 600px) {
+  .date {
+    width: 4rem;
+    height: 4rem;
+    
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
+  }
+  .date .day {
+    font-size: 28pt;
+  }
+  .date .day sup {
+    margin-right: -1ex;
+  }
+  .date .month {
+    font-size: 14pt;
+  }
+  .post-title {
+    border-bottom: 4pt solid;
+  }
+  #copy-disclaimer {
+    border-top: none;
+    border-right: 2pt solid;
+  }
 }
