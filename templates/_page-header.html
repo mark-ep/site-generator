@@ -1,0 +1,27 @@
+<div class="post-header">
+    <a class="post-banner" href='{{ url_for("page", path=post.path) }}'>
+        <div class="date">
+            <span class="day">
+                {{ post.date.day }}<sup>{{ post.date.sup }}</sup>
+            </span>
+            <span class="month">
+                {{ post.date.month }}
+            </span>
+        </div>
+        <div class="post-title">
+            <h1>{{ post.title }}</h1>
+        </div>
+    </a>
+{% if post.meta.image %}
+    <div class="post-image-container">
+        <img src="{{ url_for('static', filename=post.image) }}"></img>
+    </div>
+{% endif %}
+{% if post.meta.tags|length %}
+    <div class="tag-list">
+    {% for page_tag in page.meta.tags %}
+        <a class="tag" href='{{ url_for("tag", tag=page_tag) }}'>{{ page_tag }}</a>
+    {% endfor %}
+    </div>
+{% endif %}
+</div>

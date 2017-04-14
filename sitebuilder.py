@@ -1,29 +1,46 @@
 #!/usr/bin/python3
 import sys
 from flask import Flask, render_template
-from flask_flatpages import FlatPages
+from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
+FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite', 'toc']
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
 
+@app.route("/pygments.css")
+def pygments_css() -> str:
+    """
+    return the pygments syntax-highlighting CSS
+    """
+    return pygments_style_defs('monokai'), 200, {'Content-Type': 'text/css'}
+
 @app.route("/")
 def index() -> str:
+    """
+    render the home page
+    """
     return render_template('index.html', pages=pages)
 
-@app.route('/<path:path>/')
+@app.route('/page/<path:path>/')
 def page(path: str) -> str:
+    """
+    render a page
+    """
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
 
 @app.route('/tag/<string:tag>/')
 def tag(tag: str) -> str:
+    """
+    render a list of pages with a given tag
+    """
     tagged = [p for p in pages if tag in p.meta.get('tags', [])]
     return render_template('tag.html', pages=tagged, tag=tag)
 

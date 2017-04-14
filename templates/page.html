@@ -1,12 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>{{ page.title }}</h2>
-    {% if page.meta.tags|length %}
-        Tagged:
-        {% for page_tag in page.meta.tags %}
-            <a href='{{ url_for("tag", tag=page_tag) }}'>{{ page_tag }}</a>
-        {% endfor %}
-    {% endif %}
+    {% with post=page %}
+        {% include "_page-header.html" %}
+    {% endwith %}
     {{ page.html|safe }}
 {% endblock content %}

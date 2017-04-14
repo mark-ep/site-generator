@@ -1,13 +1,55 @@
 <!doctype html>
 <html>
   <head>
+
     <meta charset="utf-8">
-    <title>Mark Pattle</title>
+
+    <title>Mark Pattle &mdash; {{ title }}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('pygments_css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
   </head>
   <body>
-    <h1><a href="{{ url_for("index") }}">Mark Pattle</a></h1>
-  {% block content %}
-    <p>Default content -- there's nothing here!</p>
-  {% endblock content %}
+    <div id="main">
+
+      <header id="header">
+
+        <a id="site-banner" href="{{ url_for('index') }}">
+          <div id="banner-content">
+            <h1>Mark Pattle</h1>
+          </div>
+        </a>
+
+        <div id="nav-ribbon"></div>
+
+      </header>
+
+      <div id="content">
+
+      {% block content %}
+        <p>Default content -- there's nothing here!</p>
+      {% endblock content %}
+
+      </div>
+
+      <footer id="footer">
+
+        <div id="footer-content">
+          <div id="copy-disclaimer">
+            <p>&copy; 2017 Mark Pattle</p>
+          </div>
+
+          <div id="footer-links">
+            <ul>
+              <li><a href="https://twitter.com/pattlezone">Twitter</a></li>
+              <li><a href="https://github.com/mark-ep">Github</a></li>
+              <li><a href="http://www.isardsat.co.uk/team/mark-pattle/">isardSAT</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
