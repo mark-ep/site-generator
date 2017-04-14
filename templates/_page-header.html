@@ -2,10 +2,10 @@
     <a class="post-banner" href='{{ url_for("page", path=post.path) }}'>
         <div class="date">
             <span class="day">
-                {{ post.date.day }}<sup>{{ post.date.sup }}</sup>
+                {{ post.date|day }}<sup>{{ post.date|suffix }}</sup>
             </span>
             <span class="month">
-                {{ post.date.month }}
+                {{ post.date|month }}
             </span>
         </div>
         <div class="post-title">

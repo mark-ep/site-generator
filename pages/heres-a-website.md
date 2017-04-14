@@ -1,7 +1,7 @@
 title: I've Made a Website
-date: 09-04-2017
+date: 14-04-2017
 tags: [HTML, CSS, Python, Flask, Website]
-image: site-image.png
+image: imgs/site-image.png
 
 After saying that I'd it for the better part of three years, I've finally made a website.
 See? You're looking at it. I'm still in the process of figuring out exactly what I intend

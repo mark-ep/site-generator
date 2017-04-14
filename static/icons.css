@@ -1,0 +1,17 @@
+.icon svg {
+  display: block;
+  height: 1em;
+  width: 100%; }
+.icon:hover {
+  border-radius: 100%;
+  fill: #0e1a25;
+  transform: scale(1.25);
+  transition: background-color 0.5s, transform 0.5s ease-out; }
+
+.icon {
+  color: #d94a26;
+  fill: #d94a26;
+  max-height: 1em; 
+}
+  .icon:hover {
+    background: #d94a26; }

@@ -3,6 +3,7 @@ import sys
 from flask import Flask, render_template
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
+import datetime
 
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
@@ -13,6 +14,24 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
+
+@app.template_filter('month')
+def month(date: str) -> str:
+    date = datetime.datetime.strptime(date, r"%d-%m-%Y")
+    return date.strftime("%b")
+
+@app.template_filter('day')
+def day(date: str) -> str:
+    date = datetime.datetime.strptime(date, r"%d-%m-%Y")
+    return date.strftime("%d")
+
+@app.template_filter('suffix')
+def suffix(date: str) -> str:
+    date = datetime.datetime.strptime(date, r"%d-%m-%Y")
+    if 4 <= date.day <= 20 or 24 <= date.day <= 30:
+        return "th"
+    else:
+        return ["st", "nd", "rd"][date.day % 10 - 1]
 
 @app.route("/pygments.css")
 def pygments_css() -> str:

@@ -1,6 +1,14 @@
 body {
-  font-family: Helvetica, Verdana, Arial, sans-serif;
-  font-size: 11pt;
+  font-family: 'Roboto';
+  font-size: 14pt;
+  background: repeating-linear-gradient(
+    -45deg,
+    #e0dfd5,
+    #e0dfd5 30px,
+    #e8e9eb 30px,
+    #e8e9eb 60px
+  );
+  /*background: #e0dfd5;*/
 }
 #main {
   min-height: 100vh;
@@ -10,7 +18,7 @@ body {
 /* basic style stuff */
 p {
     line-height: 1.6;
-    color: #111;
+    color: #313638;
     text-align: justify;
     margin-bottom: 1em;
 }
@@ -19,18 +27,22 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 6pt;
 }
 h1, h2, h3 {
-    color: #888;
+  font: 'Raleway';
+  color: #f05d23;
 }
 h1 {
     font-size: 24pt;
-    font-weight: bold;
+    font-weight: 400;
+    margin-bottom: 12pt;
 }
 h2 {
     font-size: 18pt;
-    font-weight: bold;
+    font-weight: 300;
+    margin-bottom: 9pt;
 }
 h3 {
     font-size: 16pt;
+    margin-bottom: 8pt;
 }
 h4 {
     font-weight: bold;
@@ -40,20 +52,34 @@ h5 {
 }
 a {
     text-decoration: none;
-    color: #888;
+    color: #d9381e;
     background: #eee;
+    transition: 100ms ease-out;
 }
 a:hover {
-    border-bottom: 1pt inset;
+  color: #f05d23;
+  border-bottom: 1pt inset;
 }
 
 /* site banner */
+#header {
+  background-image: url('/static/imgs/boat.jpg');
+  background-position: center;
+  background-size: cover;
+  background-color: #313638;
+  background-blend-mode: difference;
+
+  transition: 600ms ease;
+}
+#header:hover {
+  box-shadow: 0 -50px 100px rgba(200, 200, 200, .8) inset;
+}
 #banner-content {
   width: 100%;
   max-width: 50rem;
   margin: 6pt auto;
   
-  min-height: 96pt;
+  min-height: 15rem;
   display: flex;
   
   flex-direction: column;
@@ -62,11 +88,17 @@ a:hover {
 }
 #banner-content h1 {
   font-size: 64pt;
+  font-weight: 100;
+  letter-spacing: 12pt;
   border: none;
+  text-transform: uppercase;
+  color: #e0dfd5;
+  border-bottom: 2pt solid;
+  margin: 0;
 }
 #nav-ribbon {
-  min-height: 1rem;
-  background: #c62
+  min-height: 2rem;
+  background: #d9381e;
 }
 /* content */
 #content {
@@ -74,12 +106,19 @@ a:hover {
   
   width: 100%;
   max-width: 50rem;
-  margin: 6pt auto;
+  margin: 0 auto;
+  box-shadow: 0 12pt 0 12pt #e8e9eb;
+  /*padding: 6pt;*/
+
+  background: #e8e9eb;
 }
 
 .post-header {
   padding: 6pt 0;
-  border-bottom: 2pt solid #aaa;
+  border-bottom: 2pt solid #e0dfd5;
+}
+.post-banner:hover {
+  border: none;
 }
 .post-banner {
   display: flex;
@@ -88,9 +127,11 @@ a:hover {
   width: 4rem;
   height: 4rem;
   
-  background: #c62;
-  color: #eee;
-  font-weight: bold;
+  background: #d9381e;
+  color: #e0dfd5;
+
+  font-family: 'Raleway';
+  font-weight: 300;
   
   display: flex;
   flex-direction: column;
@@ -118,14 +159,19 @@ a:hover {
 }
 .post-title h1 {
   font-size: 36pt;
-  font-weight: bold;
+  font-weight: 300;
   border: none;
 }
 a.tag {
   padding: 0 4pt;
-  background: #c62;
-  color: #eee;
+  background: #d9381e;
+  color: #e8e9eb;
   font-weight: bold;
+
+  transition: 100ms ease-out;
+}
+a.tag:hover {
+  background: #f05d23;
 }
 .post-image-container {
     max-height: 240px;
@@ -137,8 +183,7 @@ a.tag {
 
 /* site footer */
 #footer {
-  background: #333;
-  color: #eee;
+  background: #313638;
   font-weight: bold;
 }
 #footer-content {
@@ -156,6 +201,9 @@ a.tag {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #e8e9eb;
+
+  border-right: 2pt solid;
 }
 #footer-links {
   flex: 1;
@@ -163,4 +211,51 @@ a.tag {
   
   flex-direction: column;
   justify-content: center;
+  padding-left: 1em;
+}
+#footer-links a {
+  color: #e8e9eb;
+  fill: #e8e9eb;
+  background: none;
+}
+#footer-links li {
+  margin: 6pt 0;
+  vertical-align: center;
+}
+#footer-links .icon {
+  display: inline;
+  position: relative;
+  top: 4pt;
+  margin-right: -2pt;
+}
+#footer-links .icon svg {
+  height: auto;
+  width: 1.5em;
+}
+#footer-links a:hover {
+  text-decoration: underline;
+  border: none;
+
+  color: #d9381e;
+  fill: #d9381e;
+}
+
+.codehilite, .codehilitetable {
+  width: 100%;
+}
+code {
+  font-family: 'Roboto Mono', Courier, monospace;
+  background: #e0dfd5;
+}
+pre {
+  font-family: 'Roboto Mono', Courier, monospace;
+  font-size: 12pt;
+  line-height: 120%;
+  width: 100%;
+}
+em {
+  font-style: italic;
+}
+strong {
+  font-weight: 700;
 }
